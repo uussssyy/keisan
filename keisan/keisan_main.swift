@@ -24,6 +24,10 @@ struct keisan_main: View {
         var user_ans:String = ""
         var result:String = "➖"
     }
+    @State var collect_rate: Int = 0
+    @State var result_str: String = ""
+    @State var isModalPresented = false
+    var version_str = "1.01"
     // 縦横の配列を作成
     func createRandArray(num:Int,max:Int) -> [Int] {
         print("createRandArray_start")
@@ -51,13 +55,19 @@ struct keisan_main: View {
         return rtn_ans
     }
     // ユーザー回答を確認
-    func checkAns() {
+    func checkAns() -> (Int,String) {
         print("checkAns_start")
+        var collect_ans_cnt = 0.0
+        var all_cnt = 0.0
+        var result_num = 0
+        var result_str = ""
         $ansArray.forEach { $ans in
             $ans.forEach{ $ans2 in
+                all_cnt += 1
                 print("user_ans:\($ans2.user_ans.wrappedValue) answer:\($ans2.answer.wrappedValue)")
                 if (Int($ans2.user_ans.wrappedValue) == Int($ans2.answer.wrappedValue)){
                     $ans2.result.wrappedValue = "⭕️"
+                    collect_ans_cnt += 1
                 }else if ($ans2.user_ans.wrappedValue == ""){
                     $ans2.result.wrappedValue = "➖"
                 }else{
@@ -65,11 +75,22 @@ struct keisan_main: View {
                 }
             }
         }
+        result_num = Int(floor((collect_ans_cnt/all_cnt)*100))
+        if (result_num == 100){
+            result_str = "はなまる"
+        }else if (result_num >= 80){
+            result_str = "よくがんばりました"
+        }else if (result_num >= 50){
+            result_str = "もうひといき"
+        }else{
+            result_str = "もうすこしがんばろう"
+        }
         print("checkAns_end")
+        return (result_num,result_str)
     }
     var body: some View {
         ScrollView([.vertical, .horizontal], showsIndicators: true) {
-            Text("100マスけいさん ver.1.00").font(.system(size: 24, weight: .bold))
+            Text("100マスけいさん ver.\(version_str)").font(.system(size: 24, weight: .bold))
                 .onAppear {
                     // 画面用のデータを生成
                     randArray1 = createRandArray(num:Int(max_line_num) ?? 0, max:Int(max_element_num) ?? 0)
@@ -115,8 +136,10 @@ struct keisan_main: View {
                 // 回答チェックボタン
                 HStack {
                     Button(action: {
-                        checkAns()
+                        isModalPresented = true
+                        (collect_rate,result_str) = checkAns()
                         print("Checking Button tapped.")
+                        print(collect_rate)
                     }) {
                         Text("こたえあわせ")
                     }.buttonStyle(BorderedButtonStyle())
@@ -124,6 +147,10 @@ struct keisan_main: View {
                         .foregroundColor(.white)
                         .cornerRadius(10)
                 }
+            }
+            // 結果表示用モーダル
+            .sheet(isPresented: $isModalPresented) {
+                keisan_result_modal(collect_rate: collect_rate,result_str: result_str)
             }
         }
     }

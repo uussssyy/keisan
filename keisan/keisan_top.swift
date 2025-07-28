@@ -13,18 +13,15 @@ struct keisan_top: View {
         if next_flg {
             keisan_config()
         }else {
-            ZStack {
-                Image("keisan")
-                    .resizable()
+            VStack {
+                Image("keisan_top")
                     .scaledToFill()
                     .ignoresSafeArea()
                 Button {
                     next_flg = true
                 } label: {
-                    Text("タップでスタート").font(.system(size: 24, weight: .bold)).foregroundColor(.white)
+                    Text("タップでスタート").font(.system(size: 24, weight: .bold)).foregroundColor(.black)
                 }
-                
-                
             }
         }
     }

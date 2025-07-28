@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct keisan_config: View {
-    @State private var max_element_num : String = ""
-    @State private var max_line_num : String = ""
+    @State private var max_element_num : String = "9"
+    @State private var max_line_num : String = "4"
     var body: some View {
         NavigationView {
             VStack {

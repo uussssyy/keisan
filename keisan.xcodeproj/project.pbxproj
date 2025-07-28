@@ -13,6 +13,7 @@
 		839437332E2C44E8002A3EED /* keisan_top.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839437322E2C44E8002A3EED /* keisan_top.swift */; };
 		839437352E2C450A002A3EED /* keisan_config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839437342E2C450A002A3EED /* keisan_config.swift */; };
 		839437372E2C451F002A3EED /* keisan_main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839437362E2C451F002A3EED /* keisan_main.swift */; };
+		83D26BA42E35E788008E90EB /* keisan_result_modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D26BA32E35E788008E90EB /* keisan_result_modal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		839437322E2C44E8002A3EED /* keisan_top.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keisan_top.swift; sourceTree = "<group>"; };
 		839437342E2C450A002A3EED /* keisan_config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keisan_config.swift; sourceTree = "<group>"; };
 		839437362E2C451F002A3EED /* keisan_main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keisan_main.swift; sourceTree = "<group>"; };
+		83D26BA32E35E788008E90EB /* keisan_result_modal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keisan_result_modal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				839437322E2C44E8002A3EED /* keisan_top.swift */,
 				839437342E2C450A002A3EED /* keisan_config.swift */,
 				839437362E2C451F002A3EED /* keisan_main.swift */,
+				83D26BA32E35E788008E90EB /* keisan_result_modal.swift */,
 			);
 			path = keisan;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				839437332E2C44E8002A3EED /* keisan_top.swift in Sources */,
+				83D26BA42E35E788008E90EB /* keisan_result_modal.swift in Sources */,
 				839437372E2C451F002A3EED /* keisan_main.swift in Sources */,
 				839437352E2C450A002A3EED /* keisan_config.swift in Sources */,
 				839437252E2C44BD002A3EED /* keisanApp.swift in Sources */,
